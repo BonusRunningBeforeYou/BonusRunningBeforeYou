@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">跑步</string>
+    <string name="btSubmit">跑步</string>
+    <string name="textSubmit">跑步</string>
+    <string name="tsStart">跑步</string>
+    <string name="textUser">會員</string>
+    <string name="textFilled">目標</string>
+    <string name="textFriendShip">社交</string>
+    <string name="textShop">商城</string>
+</resources>
