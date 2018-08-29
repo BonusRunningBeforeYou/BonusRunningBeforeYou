@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-       />
+       />https://juejin.im/post/5a30ede35188252da0536cec
 
 
     <!-- 加上windowBackground後會有框線 -->
@@ -26,11 +26,11 @@
         android:background="?android:attr/windowBackground"
         app:menu="@menu/navigate_menu"
         app:itemBackground="@color/colorPrimary"
-        app:itemIconTint="@color/cardview_light_background"
+        app:itemIconTint="@color/colorBlue"
         android:foregroundGravity="center_horizontal"
         android:textAlignment="center"
         android:paddingBottom="@dimen/cardview_compat_inset_shadow"
-        app:itemTextColor="@color/cardview_light_background"
+        app:itemTextColor="@color/colorBlue"
 
 
 
