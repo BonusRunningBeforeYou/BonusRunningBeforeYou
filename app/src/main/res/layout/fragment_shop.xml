@@ -1,13 +1,27 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#aaffc5">
+    android:id="@+id/Shop">
 
-    <TextView
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        app:contentInsetStart="165dp"
+        app:title="@string/SHOP"
+        app:titleTextColor="@color/colorBlack">
+
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="6dp"
-        android:text="@string/textShop"
-        android:textSize="50sp" />
+        android:orientation="vertical"
+        android:layout_marginTop="56dp">
 
-</LinearLayout>
+    </android.support.v7.widget.RecyclerView>
+
+</android.support.constraint.ConstraintLayout>

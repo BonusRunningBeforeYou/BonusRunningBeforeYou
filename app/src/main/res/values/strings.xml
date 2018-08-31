@@ -7,4 +7,9 @@
     <string name="textFilled">目標</string>
     <string name="textFriendShip">社交</string>
     <string name="textShop">商城</string>
+    <string name="SHOP">點數商城</string>
+    <string name="couponid">CouponId</string>
+    <string name="quantity">Quantity</string>
+    <string name="price">Price</string>
+    <string name="details">商品詳情</string>
 </resources>

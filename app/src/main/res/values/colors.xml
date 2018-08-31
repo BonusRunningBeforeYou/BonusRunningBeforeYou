@@ -4,4 +4,10 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorBlue">#46bcff</color>
     <color name="colorPrimary">#3F51B5</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorTheme">#46BCFF</color>
+    <color name="colorGray">#EEEEEE</color>
+    <color name="colorRed">#FF0000</color>
+    <color name="colorGold">#FEA832</color>
+    <color name="colorGreen">#15DB1D</color>
 </resources>

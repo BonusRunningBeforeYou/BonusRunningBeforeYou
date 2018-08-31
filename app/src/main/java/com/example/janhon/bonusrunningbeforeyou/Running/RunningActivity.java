@@ -16,8 +16,8 @@ import android.view.View;
 import com.example.janhon.bonusrunningbeforeyou.OtherMainFunction.FilledFragment;
 import com.example.janhon.bonusrunningbeforeyou.OtherMainFunction.FriendShipFragment;
 import com.example.janhon.bonusrunningbeforeyou.R;
-import com.example.janhon.bonusrunningbeforeyou.OtherMainFunction.ShopFragment;
 import com.example.janhon.bonusrunningbeforeyou.OtherMainFunction.UserFragment;
+import com.example.janhon.bonusrunningbeforeyou.Shop.ShopFragment;
 
 import java.util.HashSet;
 import java.util.Set;
