@@ -1,6 +1,7 @@
 package com.example.janhon.bonusrunningbeforeyou.Running;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -120,6 +121,8 @@ public class RunningActivity extends FragmentActivity  {
     }
 
     public void onStartClick(View view) {
+        Intent intent = new Intent(this, RunningDataActivity.class);
+        startActivity(intent);
     }
 
 
