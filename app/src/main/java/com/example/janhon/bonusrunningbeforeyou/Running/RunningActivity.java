@@ -11,9 +11,13 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.crashlytics.android.Crashlytics;
 import com.example.janhon.bonusrunningbeforeyou.OtherMainFunction.FilledFragment;
 import com.example.janhon.bonusrunningbeforeyou.OtherMainFunction.FriendShipFragment;
 import com.example.janhon.bonusrunningbeforeyou.R;
@@ -23,8 +27,26 @@ import com.example.janhon.bonusrunningbeforeyou.Shop.ShopFragment;
 import java.util.HashSet;
 import java.util.Set;
 
+import io.fabric.sdk.android.Fabric;
+
 public class RunningActivity extends FragmentActivity  {
 
+
+    public void enableDebugMode() {
+        // [START crash_enable_debug_mode]
+        final Fabric fabric = new Fabric.Builder(this)
+                .kits(new Crashlytics())
+                .debuggable(true)  // Enables Crashlytics debugger
+                .build();
+        Fabric.with(fabric);
+        // [END crash_enable_debug_mode]
+    }
+
+    public void enableAtRuntime() {
+        // [START crash_enable_at_runtime]
+        Fabric.with(this, new Crashlytics());
+        // [END crash_enable_at_runtime]
+    }
 
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener //當選項轉換時進入監聽器.
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -74,6 +96,9 @@ public class RunningActivity extends FragmentActivity  {
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
         BottomNavigationViewHelper.disableShiftMode(navigation);
         initContent();
+        enableDebugMode();
+        enableAtRuntime();
+        Crashlytics.log(Log.DEBUG, "tag", "message");
     }
 
     private void initContent() {
@@ -88,6 +113,7 @@ public class RunningActivity extends FragmentActivity  {
                 fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.body, fragment);
         fragmentTransaction.commit();
+
     }
 
     @Override
@@ -124,6 +150,12 @@ public class RunningActivity extends FragmentActivity  {
         Intent intent = new Intent(this, RunningDataActivity.class);
         startActivity(intent);
     }
+
+
+//    public void forceCrash(View view) {   //測試跳錯誤.
+//            throw new RuntimeException("This is a crash");
+//
+//    }
 
 
 }
