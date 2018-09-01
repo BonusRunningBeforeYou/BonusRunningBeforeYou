@@ -31,7 +31,6 @@ import io.fabric.sdk.android.Fabric;
 
 public class RunningActivity extends FragmentActivity  {
 
-
     public void enableDebugMode() {
         // [START crash_enable_debug_mode]
         final Fabric fabric = new Fabric.Builder(this)
@@ -96,9 +95,9 @@ public class RunningActivity extends FragmentActivity  {
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
         BottomNavigationViewHelper.disableShiftMode(navigation);
         initContent();
+        //forceACrash();
         enableDebugMode();
         enableAtRuntime();
-        Crashlytics.log(Log.DEBUG, "tag", "message");
     }
 
     private void initContent() {
@@ -150,12 +149,6 @@ public class RunningActivity extends FragmentActivity  {
         Intent intent = new Intent(this, RunningDataActivity.class);
         startActivity(intent);
     }
-
-
-//    public void forceCrash(View view) {   //測試跳錯誤.
-//            throw new RuntimeException("This is a crash");
-//
-//    }
 
 
 }
