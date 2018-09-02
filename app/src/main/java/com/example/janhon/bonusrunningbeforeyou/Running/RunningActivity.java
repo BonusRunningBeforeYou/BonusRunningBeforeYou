@@ -95,9 +95,9 @@ public class RunningActivity extends FragmentActivity  {
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
         BottomNavigationViewHelper.disableShiftMode(navigation);
         initContent();
-        //forceACrash();
         enableDebugMode();
         enableAtRuntime();
+        Crashlytics.log(Log.DEBUG, "tag", "message");
     }
 
     private void initContent() {
@@ -149,6 +149,8 @@ public class RunningActivity extends FragmentActivity  {
         Intent intent = new Intent(this, RunningDataActivity.class);
         startActivity(intent);
     }
+
+
 
 
 }

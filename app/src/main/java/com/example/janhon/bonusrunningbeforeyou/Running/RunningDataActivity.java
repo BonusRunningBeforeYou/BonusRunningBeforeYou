@@ -1,9 +1,16 @@
 package com.example.janhon.bonusrunningbeforeyou.Running;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,11 +19,12 @@ import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
 import com.example.janhon.bonusrunningbeforeyou.R;
+import com.google.android.gms.maps.SupportMapFragment;
 
 import io.fabric.sdk.android.Fabric;
 
 // CP102 陳建宏
-public class RunningDataActivity extends Activity {
+public class RunningDataActivity extends FragmentActivity {
     Long mRecordTime ;
 
     public void enableDebugMode() {
@@ -44,7 +52,7 @@ public class RunningDataActivity extends Activity {
         text_timer.start();
         enableDebugMode();
         enableAtRuntime();
-        Crashlytics.log(Log.DEBUG, "tag", "message");
+        //Crashlytics.log(Log.DEBUG, "tag", "message");
         Button button = findViewById(R.id.btPause);
         Button button1 =  findViewById(R.id.btPlay);
         button1.setVisibility(button1.GONE);
@@ -58,8 +66,6 @@ public class RunningDataActivity extends Activity {
     }
 
 
-
-
     public void onPauseClick(View view) {
         Chronometer text_timer = findViewById(R.id.text_timer);
         text_timer.stop();
@@ -68,6 +74,9 @@ public class RunningDataActivity extends Activity {
         button.setVisibility(View.GONE);
         Button button1 = findViewById(R.id.btPlay);  //將繼續鈕置入
         button1.setVisibility(View.VISIBLE);
+
+        StopRunningFragment stopRunningFragment = new StopRunningFragment();
+        stopRunningFragment.show(getSupportFragmentManager(), "missiles");
     }
 
     public void onPlayClick(View view) {
