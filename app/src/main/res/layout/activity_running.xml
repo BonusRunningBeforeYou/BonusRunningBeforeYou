@@ -15,9 +15,6 @@
         android:layout_height="0dp"
         android:layout_weight="1"
        />
-    <!--https://juejin.im/post/5a30ede35188252da0536cec
-    -->
-
 
     <!-- 加上windowBackground後會有框線 -->
     <android.support.design.widget.BottomNavigationView
