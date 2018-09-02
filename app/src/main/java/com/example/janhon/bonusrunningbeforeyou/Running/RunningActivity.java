@@ -15,10 +15,10 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.janhon.bonusrunningbeforeyou.OtherMainFunction.FilledFragment;
-import com.example.janhon.bonusrunningbeforeyou.OtherMainFunction.FriendShipFragment;
 import com.example.janhon.bonusrunningbeforeyou.R;
 import com.example.janhon.bonusrunningbeforeyou.OtherMainFunction.UserFragment;
 import com.example.janhon.bonusrunningbeforeyou.Shop.ShopFragment;
+import com.example.janhon.bonusrunningbeforeyou.social.FriendsFragment;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -48,7 +48,7 @@ public class RunningActivity extends FragmentActivity  {
                     setTitle(R.string.textFilled);
                     return true;
                 case R.id.item_FriendShip:
-                    fragment = new FriendShipFragment();
+                    fragment = new FriendsFragment();
                     changeFragment(fragment);
                     setTitle(R.string.textFriendShip);
                     return true;

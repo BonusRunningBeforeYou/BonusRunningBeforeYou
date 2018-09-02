@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="5dp"
+    app:cardCornerRadius="6dp"
+
+    app:cardElevation="6dp">
+
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        tools:context=".MainActivity">
+
+        <ImageView
+            android:id="@+id/ivGoFriends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gofriends" />
+
+        <TextView
+            android:id="@+id/tvGoFriendsName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/ivGoFriends"
+            android:layout_centerHorizontal="true"
+            android:text="假揪團跑"
+            android:textColor="@color/colorPrimary"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/tvGofriendsJoinPeople"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ivGoFriends"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="117dp"
+            android:text="23人參加"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tvStartDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ivGoFriends"
+
+            android:layout_alignEnd="@+id/tvGoFriendsSignUpStatus"
+            android:text="6天後開始"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tvGoFriendsSignUpStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/ivGoFriendsKeyboard"
+            android:layout_alignTop="@+id/ivGoFriends"
+            android:text="報名中"
+
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tvGoFriendsRunPlace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ivGoFriends"
+
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="107dp"
+            android:text="台北市"
+            android:textColor="@color/colorPrimary" />
+
+        <ImageView
+            android:id="@+id/ivGoFriendsKeyboard"
+            android:layout_width="31dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="13dp"
+            android:src="@drawable/outline_keyboard_arrow_right_black2" />
+
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
