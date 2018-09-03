@@ -2,9 +2,14 @@ package com.example.janhon.bonusrunningbeforeyou.Running;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.SystemClock;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -21,11 +26,30 @@ import com.crashlytics.android.Crashlytics;
 import com.example.janhon.bonusrunningbeforeyou.R;
 import com.google.android.gms.maps.SupportMapFragment;
 
+import java.util.Locale;
+
 import io.fabric.sdk.android.Fabric;
 
 // CP102 陳建宏
 public class RunningDataActivity extends FragmentActivity {
     Long mRecordTime ;
+    private OdometerService odometer; //用它來代表OdometerService.
+    private boolean bound = false; //用它來儲存activity是否綁定服務.
+    Handler handler = new Handler();
+    Runnable runnable=new Runnable() {
+        @Override
+        public void run() {
+            // TODO Auto-generated method stub
+            double distance = 0.0;
+            if (bound && odometer != null) {
+                distance = odometer.getDistance();
+            }
+            String distanceStr = String.format(Locale.getDefault(), "%1$,.2f KM", distance);
+            TextView distanceView = findViewById(R.id.kiloMeter);
+            distanceView.setText(distanceStr);
+            handler.postDelayed(this, 1000);
+        }
+    };
 
     public void enableDebugMode() {
         // [START crash_enable_debug_mode]
@@ -43,6 +67,27 @@ public class RunningDataActivity extends FragmentActivity {
         // [END crash_enable_at_runtime]
     }
 
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder binder) {
+            OdometerService.OdometerBinder odometerBinder = (OdometerService.OdometerBinder) binder;
+            odometer = odometerBinder.getOdometer(); //在連結服務時取得OdometerService的參考.
+            bound = true;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            bound = false;
+        }
+
+        @Override
+        public void onBindingDied(ComponentName componentName) {
+
+        }
+
+
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +97,7 @@ public class RunningDataActivity extends FragmentActivity {
         text_timer.start();
         enableDebugMode();
         enableAtRuntime();
-        //Crashlytics.log(Log.DEBUG, "tag", "message");
+        //Crashlytics.log(Log.DEBUG, "tag", "message"); //回傳當機時再啟用即可.
         Button button = findViewById(R.id.btPause);
         Button button1 =  findViewById(R.id.btPlay);
         button1.setVisibility(button1.GONE);
@@ -63,13 +108,35 @@ public class RunningDataActivity extends FragmentActivity {
                 onPauseClick(v);
             }
         });
+
+        displayDistance();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Intent intent = new Intent(this, OdometerService.class);
+        bindService(intent, connection, Context.BIND_AUTO_CREATE); //在activity啟動時綁定服務.
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (bound) {
+            unbindService(connection); //在activity停止時解除服務綁定.
+            bound = false;
+        }
+
+    }
 
     public void onPauseClick(View view) {
         Chronometer text_timer = findViewById(R.id.text_timer);
         text_timer.stop();
-        mRecordTime = SystemClock.elapsedRealtime();
+        mRecordTime = SystemClock.elapsedRealtime(); //停止時間
+
+        handler.removeCallbacks(runnable); //停止計算里程
+
         Button button = findViewById(R.id.btPause);  //將暫停鈕移除
         button.setVisibility(View.GONE);
         Button button1 = findViewById(R.id.btPlay);  //將繼續鈕置入
@@ -77,6 +144,8 @@ public class RunningDataActivity extends FragmentActivity {
 
         StopRunningFragment stopRunningFragment = new StopRunningFragment();
         stopRunningFragment.show(getSupportFragmentManager(), "missiles");
+
+
     }
 
     public void onPlayClick(View view) {
@@ -91,5 +160,14 @@ public class RunningDataActivity extends FragmentActivity {
         button1.setVisibility(View.GONE);
         Button button =  findViewById(R.id.btPause);
         button.setVisibility(View.VISIBLE);
+
+        handler.post(runnable);  //繼續計算里程
+
     }
+
+    private void displayDistance() {
+
+        handler.post(runnable);  //計算里程
+    }
+
 }
