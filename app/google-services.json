@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "810784103075",
+    "firebase_url": "https://bouns-running-before-you.firebaseio.com",
+    "project_id": "bouns-running-before-you",
+    "storage_bucket": "bouns-running-before-you.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810784103075:android:a0740f042badde37",
+        "android_client_info": {
+          "package_name": "com.example.janhon.bonusrunningbeforeyou"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "810784103075-l1c9u4ba6pajoi50e4vqdagkcp4u8tbr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTNcKlUCqzMPxeVAroA_GP7BjptK2w6qg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
