@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.janhon.bonusrunningbeforeyou.R;
+import com.example.janhon.bonusrunningbeforeyou.social.gamedetail.GameDetailActivity;
 import com.example.janhon.bonusrunningbeforeyou.social.main_friend.GoFriendsFragment;
 
 import java.util.List;
@@ -107,7 +108,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.MyViewHolder> 
         myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, GoFriendsFragment.class);
+                Intent intent = new Intent(context, GameDetailActivity.class);
 //                Bundle bundle = new Bundle();
 //                bundle.putString("ProductName", product.getProductName());
 //                bundle.putInt("ProductImage", product.getProductImg());
