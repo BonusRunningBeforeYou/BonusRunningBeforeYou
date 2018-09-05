@@ -39,11 +39,15 @@
         </activity>
 
 
-        <activity android:name=".Running.RunningDataActivity"></activity>
+        <activity android:name=".Running.RunningDataActivity">
+
+        </activity>
 
         <activity
             android:name=".social.gamedetail.GameDetailActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        </activity>
 
     </application>
 

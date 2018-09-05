@@ -11,5 +11,6 @@
     <color name="colorGold">#FEA832</color>
     <color name="colorGreen">#15DB1D</color>
     <color name="colorLightBlue">#849fe2ff</color>
+    <color name="colorLightGrey">#c1edf1f2</color>
 
 </resources>

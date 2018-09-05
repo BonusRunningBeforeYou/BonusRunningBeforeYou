@@ -20,7 +20,7 @@ public class FragmentFactory {
     private static ArrayList<Fragment> fragments;
 
     /**
-     * 創建首業子Fragment列表
+     * 創建首頁子Fragment列表
      */
     public static ArrayList<Fragment> createIndexFragments() {
         fragments = new ArrayList<>();

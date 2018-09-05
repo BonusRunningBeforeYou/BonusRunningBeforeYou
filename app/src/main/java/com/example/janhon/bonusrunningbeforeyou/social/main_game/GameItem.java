@@ -14,14 +14,17 @@ public class GameItem {
     private String joinPeople;
     private String days;
     private String signUpStatus;
+    private String gameDetail;
+    private String gameDetailText;
 
-
-    public GameItem(int medal, String gameName, String joinPeople, String days, String signUpStatus) {
+    public GameItem(int medal, String gameName, String joinPeople, String days, String signUpStatus, String gameDetail, String gameDetailText) {
         this.medal = medal;
         this.gameName = gameName;
         this.joinPeople = joinPeople;
         this.days = days;
         this.signUpStatus = signUpStatus;
+        this.gameDetail = gameDetail;
+        this.gameDetailText = gameDetailText;
     }
 
     public int getMedal() {
@@ -62,5 +65,21 @@ public class GameItem {
 
     public void setSignUpStatus(String signUpStatus) {
         this.signUpStatus = signUpStatus;
+    }
+
+    public String getGameDetail() {
+        return gameDetail;
+    }
+
+    public void setGameDetail(String gameDetail) {
+        this.gameDetail = gameDetail;
+    }
+
+    public String getGameDetailText() {
+        return gameDetailText;
+    }
+
+    public void setGameDetailText(String gameDetailText) {
+        this.gameDetailText = gameDetailText;
     }
 }

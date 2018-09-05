@@ -8,8 +8,9 @@
     <TextView
         android:id="@+id/tvGameDetailText"
         android:textColor="@color/colorBlack"
-        android:textSize="14dp"
-        android:text="簡介\n
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+        <!--android:text="簡介\n
 
             2018年8月01日-2018年8月31日\n
 
@@ -19,8 +20,7 @@
 \n
 \t只要在2018年8月01日-2018年8月31日中累計里程數在所有跑者中為前10名者可以得到排名獎勵。\n
 第一名可以得到XXX點\n
-第二名可以得到XXX點\n  "
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+第二名可以得到XXX點\n  "-->
+
 
 </RelativeLayout>

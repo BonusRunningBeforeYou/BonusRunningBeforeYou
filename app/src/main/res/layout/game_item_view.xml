@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     android:layout_marginBottom="8dp"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
@@ -19,6 +20,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorLightBlue"
         android:padding="10dp"
         tools:context=".MainActivity">
 
@@ -66,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/ivGameKeyboard"
             android:layout_alignTop="@+id/ivMedal"
-            android:text="報名中"
+
 
             android:textColor="@color/colorPrimary" />
 
