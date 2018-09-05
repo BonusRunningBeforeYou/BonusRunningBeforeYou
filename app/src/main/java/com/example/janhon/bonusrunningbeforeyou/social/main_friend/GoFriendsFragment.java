@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.janhon.bonusrunningbeforeyou.R;
-import com.example.janhon.bonusrunningbeforeyou.social.GoFriendsItem;
 
 import java.util.ArrayList;
 import java.util.List;

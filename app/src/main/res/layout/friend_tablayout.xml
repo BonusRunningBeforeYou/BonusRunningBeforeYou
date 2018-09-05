@@ -22,6 +22,7 @@
         android:scrollbarSize="70dp"
         app:tabTextColor="@color/colorBlack"
         app:tabSelectedTextColor="@color/colorBlue"
+        android:background="@color/colorLightGrey"
         app:tabTextAppearance="@style/TabTextSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

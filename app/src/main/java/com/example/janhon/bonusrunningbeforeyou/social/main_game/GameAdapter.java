@@ -2,6 +2,7 @@ package com.example.janhon.bonusrunningbeforeyou.social.main_game;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.janhon.bonusrunningbeforeyou.R;
+import com.example.janhon.bonusrunningbeforeyou.social.gamedetail.GameDetailActivity;
+import com.example.janhon.bonusrunningbeforeyou.social.gamedetail.GameDialogFragment;
 import com.example.janhon.bonusrunningbeforeyou.social.main_friend.GoFriendsFragment;
 
 import java.util.List;
@@ -76,6 +79,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.MyViewHolder> 
         TextView tvDays;
         TextView tvSignUpStatus;
 
+
         public MyViewHolder(@NonNull View item_view) {
             super(item_view);
             ivMedal = item_view.findViewById(R.id.ivMedal);
@@ -100,20 +104,20 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.MyViewHolder> 
         myViewHolder.tvGameName.setText(gameItem.getGameName());
         myViewHolder.tvJoinPeople.setText(gameItem.getJoinPeople());
         myViewHolder.tvDays.setText(gameItem.getDays());
-        myViewHolder.tvSignUpStatus.setText(gameItem.getSignUpStatus());
+//        myViewHolder.tvSignUpStatus.setText(gameItem.getSignUpStatus());
 
 
         /*itemView 是 點擊的那個項目*/
         myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, GoFriendsFragment.class);
-//                Bundle bundle = new Bundle();
-//                bundle.putString("ProductName", product.getProductName());
-//                bundle.putInt("ProductImage", product.getProductImg());
-//                intent.putExtras(bundle);
+                Intent intent = new Intent(context, GameDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("gameName", gameItem.getGameName());
+                bundle.putString("gameDetail", gameItem.getGameDetail());
+                bundle.putString("gameDetailText",gameItem.getGameDetailText());
+                intent.putExtras(bundle);
                 context.startActivity(intent);
-//                Toast.makeText(context, product.getProductName(), Toast.LENGTH_LONG).show();
             }
         });
     }

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize">
+
+        <TextView
+            android:id="@+id/tvGameDetailToobar"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorBlack" />
+
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/llGameDetailText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onDetailClick"
+        android:orientation="vertical">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorLightBlue"
+            android:padding="10dp">
+
+
+            <TextView
+                android:id="@+id/tvGameDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"/>
+                <!--android:text="簡介\n
+            \n
+            2018年8月01日-2018年8月31日\n
+            \n
+使用Bonus Running Before You的GPS跑步功能累積您的里程，與其他跑者一起競賽！"
+                android:textColor="@color/colorBlack"-->
+
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="16dp"
+                android:layout_alignBottom="@+id/tvGameDetail"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="22dp"
+                android:src="@drawable/outline_keyboard_arrow_right_black2" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:onClick="onJoinClick"
+                android:id="@+id/buttonJoin"
+                android:layout_width="100dp"
+                android:layout_height="36dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/button_rounde"
+                android:gravity="center"
+                android:text="@string/buttonJoinGame"
+                android:textSize="14sp" />
+
+            <RelativeLayout
+                android:id="@+id/rlGameDetailUserDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/ciGameDetailUserImage"
+                    android:layout_width="46dp"
+                    android:layout_height="34dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="58dp"
+                    android:src="@drawable/gamedetailitem" />
+
+                <TextView
+                    android:id="@+id/tvGameDetailUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="121dp"
+                    android:textColor="@color/colorBlack"
+                    android:paddingTop="8dp"
+                    android:text="魔鬼貓" />
+
+                <TextView
+                    android:id="@+id/tvGameDetailUserKm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="77dp"
+                    android:textColor="@color/colorBlack"
+                    android:paddingTop="8dp"
+                    android:text="xxxxxKm" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorLightBlue">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvGameDetail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</LinearLayout>

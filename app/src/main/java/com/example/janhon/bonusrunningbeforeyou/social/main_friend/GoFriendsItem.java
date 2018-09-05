@@ -1,4 +1,4 @@
-package com.example.janhon.bonusrunningbeforeyou.social;
+package com.example.janhon.bonusrunningbeforeyou.social.main_friend;
 
 /*
 *justin
