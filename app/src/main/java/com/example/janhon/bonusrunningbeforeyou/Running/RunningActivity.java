@@ -46,6 +46,21 @@ public class RunningActivity extends FragmentActivity  {
 //        Fabric.with(this, new Crashlytics());
 //        // [END crash_enable_at_runtime]
 //    }
+    public void enableDebugMode() {
+        // [START crash_enable_debug_mode]
+        final Fabric fabric = new Fabric.Builder(this)
+                .kits(new Crashlytics())
+                .debuggable(true)  // Enables Crashlytics debugger
+                .build();
+        Fabric.with(fabric);
+        // [END crash_enable_debug_mode]
+    }
+
+    public void enableAtRuntime() {
+        // [START crash_enable_at_runtime]
+        Fabric.with(this, new Crashlytics());
+        // [END crash_enable_at_runtime]
+    }
 
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener //當選項轉換時進入監聽器.
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -150,6 +165,8 @@ public class RunningActivity extends FragmentActivity  {
         startActivity(intent);
 
     }
+
+
 
 
 
