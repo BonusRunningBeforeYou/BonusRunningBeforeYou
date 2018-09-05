@@ -23,13 +23,13 @@ import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
 
-import com.crashlytics.android.Crashlytics;
+//import com.crashlytics.android.Crashlytics;
 import com.example.janhon.bonusrunningbeforeyou.R;
 import com.google.android.gms.maps.SupportMapFragment;
 
 import java.util.Locale;
 
-import io.fabric.sdk.android.Fabric;
+//import io.fabric.sdk.android.Fabric;
 
 // CP102 陳建宏
 public class RunningDataActivity extends FragmentActivity {

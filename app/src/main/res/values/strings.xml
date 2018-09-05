@@ -32,7 +32,8 @@
     <string name="tb_membercenter">會員中心</string>
     <string name="logout">登出</string>
     <string name="pause_running">確定結束運動嗎?</string>
-
+    <string name="sure">確定</string>
+    <string name="cancel">取消</string>
 
     <string name="social">社交</string>
     <string name="game_detail">八月份距離競賽</string>
