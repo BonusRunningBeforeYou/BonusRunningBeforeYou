@@ -1,0 +1,26 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLightBlue"
+    android:padding="12dp"
+    >
+    <TextView
+        android:id="@+id/tvGameDetailText"
+        android:textColor="@color/colorBlack"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+        <!--android:text="簡介\n
+
+            2018年8月01日-2018年8月31日\n
+
+\t使用Bonus Running Before You的GPS跑步功能累積您的里程，與其他跑者一起競賽！\n\n\t在整個賽事期間您都可以隨時開跑，只要參與賽事的跑者我們都會給予參加獎勵點數xxx點，不管您是初級跑者或是專業跑者我們都歡迎您一起參與賽事，但無論如何請注意您的跑步環境以確保人身安全。\n
+\n
+規則\n
+\n
+\t只要在2018年8月01日-2018年8月31日中累計里程數在所有跑者中為前10名者可以得到排名獎勵。\n
+第一名可以得到XXX點\n
+第二名可以得到XXX點\n  "-->
+
+
+</RelativeLayout>

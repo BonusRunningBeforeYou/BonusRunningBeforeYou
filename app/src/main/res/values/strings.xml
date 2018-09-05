@@ -14,4 +14,8 @@
     <string name="details">商品詳情</string>
     <string name="timeStart"> </string>
     <string name="kiloRunning">0.0 km</string>
+    <string name="social">社交</string>
+    <string name="game_detail">八月份距離競賽</string>
+    <string name="buttonJoinGame">加入</string>
+    <string name="dailogText">確定</string>
 </resources>

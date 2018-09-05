@@ -6,5 +6,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="OverFlowMenuTheme">OverFlowMenuTheme</style>
 
+    <style name="TabTextSize" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
+        <item name="android:textSize">20sp</item>
+    </style>
 </resources>
