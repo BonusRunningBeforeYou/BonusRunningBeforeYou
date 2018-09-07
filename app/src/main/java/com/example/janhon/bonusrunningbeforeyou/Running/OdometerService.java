@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
@@ -15,6 +16,7 @@ import android.os.IBinder;
 
 import java.io.IOException;
 import java.security.Provider;
+import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Bundle;
@@ -24,14 +26,18 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+
+import io.fabric.sdk.android.Fabric;
 
 public class OdometerService extends Service {
     private final IBinder binder = new OdometerBinder();
@@ -40,11 +46,27 @@ public class OdometerService extends Service {
     public static final String PERMISSION_STRING = Manifest.permission.ACCESS_FINE_LOCATION;
     private static double distanceInKilometers;
     private static Location lastLocation = null;
-    private GoogleMap map;
-    private Geocoder geocoder;
-    private LatLng latitude;
-    private LatLng longitude;
-    private LatLng[] latLngs ;
+    private static List<LatLng> points = new ArrayList<>();  // list of latlng
+    private static LatLng src ;
+    private static LatLng dest ;
+
+//    public void enableDebugMode() {
+//        // [START crash_enable_debug_mode]
+//        final Fabric fabric = new Fabric.Builder(this)
+//                .kits(new Crashlytics())
+//                .debuggable(true)  // Enables Crashlytics debugger
+//                .build();
+//        Fabric.with(fabric);
+//        // [END crash_enable_debug_mode]
+//    }
+//
+//    public void enableAtRuntime() {
+//        // [START crash_enable_at_runtime]
+//        Fabric.with(this, new Crashlytics());
+//        // [END crash_enable_at_runtime]
+//    }
+
+
 
 
 
@@ -73,9 +95,14 @@ public class OdometerService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        //firebase用程式碼
+        //enableDebugMode();
+        //enableAtRuntime();
+        //Crashlytics.log(Log.DEBUG, "tag", "message"); //回傳當機時再啟用即可.
+
+
         listener = new LocationListener() {
-
-
             @Override
             public void onLocationChanged(Location location) {
                 if (lastLocation == null) {
@@ -84,16 +111,21 @@ public class OdometerService extends Service {
                 distanceInKilometers += location.distanceTo(lastLocation);
                 lastLocation = location;
 
-                //LatLng latLng = new LatLng(location.getLongitude(),location.getLatitude());
+                do {
+                    points.add((new LatLng(lastLocation.getLatitude(), lastLocation.getLongitude())));
+                    for (int i = 0; i < points.size() - 1; i++) {
+                        src = points.get(i);
+                        dest = points.get(i + 1);
+                    }
+                } while ((distanceInKilometers != location.distanceTo(lastLocation)));
 
-//                draw2D();
-//
-//                for(int i = 0 ; i <=latLngs.length ;i++) {
-//                    latLngs[i] = latLng;
-//                    //showLatlng(latLngs);
-//                }
+
+                //Crashlytics.log(Log.DEBUG, "tag", "valueOfLocation" + location.getLatitude() + "&" + location.getLongitude());
+                //Log.d("tag", "valueOfLocation" + location.getLatitude() + "&" + location.getLongitude());
 
             }
+
+
 
             @Override
             public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -111,6 +143,7 @@ public class OdometerService extends Service {
             }
         };
 
+
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ContextCompat.checkSelfPermission(this, PERMISSION_STRING) == PackageManager.PERMISSION_GRANTED) {
             String provider = locationManager.getBestProvider(new Criteria(), true);
@@ -121,6 +154,7 @@ public class OdometerService extends Service {
 
 
     }
+
 
     @Override
     public void onDestroy() {
@@ -138,42 +172,19 @@ public class OdometerService extends Service {
         return distanceInKilometers / 1000;
     }
 
+    public LatLng getSrc() {
+        for (int i = 0; i < points.size() - 1; i++) {
+             src = points.get(i);
+        }
+        return src;
+    }
 
-//    private void draw2D() {
-//        Polyline polyline = map.addPolyline(
-//                new PolylineOptions()
-//                        .add(latLngs) //緯經度放這邊. 根據記錄,描繪各個點把軌跡呈現.
-//                        .width(5)
-//                        .color(Color.MAGENTA)
-//                        .zIndex(1)); //z軸,數字越大,高度越高. default值為零.
-//
-//        polyline.setWidth(20);
-//    }
-
-
-//    public LatLng[] showLatlng(LatLng... latLngs) {  //參數列表  Vargs, 用來解決不定參數的個數問題.
-//        return this.latLngs;
-//    }
-
-
-//    private String name;
-//    private double price;
-//    public Book(String name, double price) {
-//        super();
-//        this.name = name ;
-//        this.price = price ;
-//    }
-//
-//    public void show() {
-//        System.out.println(name);
-//        System.out.println(price);
-//    }
-//
-//    public static void showBooks(Book...books ) {  //參數列表  Vargs, 用來解決不定參數的個數問題.
-//        for(Book book : books) {
-//            book.show();
-//        }
-//    }
+    public LatLng getDest() {
+        for (int i = 0; i < points.size() - 1; i++) {
+             dest = points.get(i + 1);
+        }
+        return dest;
+    }
 
 }
 

@@ -5,13 +5,16 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.crashlytics.android.Crashlytics;
 import com.example.janhon.bonusrunningbeforeyou.R;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -30,7 +33,8 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 public class RunningFragment extends Fragment implements
         OnMapReadyCallback {
-    private GoogleMap map;
+    public GoogleMap map;
+    private OdometerService odometer;
 
 
     @Override
@@ -52,6 +56,7 @@ public class RunningFragment extends Fragment implements
         this.map = map;
         setUpMap();
 
+
     }
 
     private void setUpMap() {
@@ -60,6 +65,19 @@ public class RunningFragment extends Fragment implements
             map.setMyLocationEnabled(true);
         }
         map.getUiSettings().setZoomControlsEnabled(true);
+
+    }
+
+    public void draw2D() {
+        Polyline polyline = map.addPolyline(
+                new PolylineOptions()
+                        .add(new LatLng(odometer.getSrc().latitude, odometer.getSrc().longitude), new LatLng(odometer.getDest().latitude, odometer.getDest().longitude)) //緯經度放這邊. 根據記錄,描繪各個點把軌跡呈現.
+                        .width(10)
+                        .color(Color.MAGENTA)
+                        .zIndex(1)); //z軸,數字越大,高度越高. default值為零.
+
+        polyline.setWidth(10);
+
     }
 }
 

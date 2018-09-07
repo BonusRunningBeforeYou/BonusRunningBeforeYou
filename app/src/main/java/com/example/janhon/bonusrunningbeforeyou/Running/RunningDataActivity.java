@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -22,20 +23,26 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
-
-//import com.crashlytics.android.Crashlytics;
 import com.example.janhon.bonusrunningbeforeyou.R;
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
-
 import java.util.Locale;
 
-//import io.fabric.sdk.android.Fabric;
+import com.crashlytics.android.Crashlytics;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
+
+
+import io.fabric.sdk.android.Fabric;
 
 // CP102 陳建宏
 public class RunningDataActivity extends FragmentActivity {
     Long mRecordTime ;
     private OdometerService odometer; //用它來代表OdometerService.
     private boolean bound = false; //用它來儲存activity是否綁定服務.
+    private RunningFragment runningFragment;
+
     Handler handler = new Handler();
     Runnable runnable=new Runnable() {
         @Override
@@ -48,25 +55,22 @@ public class RunningDataActivity extends FragmentActivity {
             String distanceStr = String.format(Locale.getDefault(), "%1$,.2f KM", distance);
             TextView distanceView = findViewById(R.id.kiloMeter);
             distanceView.setText(distanceStr);
-            handler.postDelayed(this, 1000);
+            handler.postDelayed(this, 5000);
         }
     };
 
-//    public void enableDebugMode() {
-//        // [START crash_enable_debug_mode]
-//        final Fabric fabric = new Fabric.Builder(this)
-//                .kits(new Crashlytics())
-//                .debuggable(true)  // Enables Crashlytics debugger
-//                .build();
-//        Fabric.with(fabric);
-//        // [END crash_enable_debug_mode]
-//    }
-//
-//    public void enableAtRuntime() {
-//        // [START crash_enable_at_runtime]
-//        Fabric.with(this, new Crashlytics());
-//        // [END crash_enable_at_runtime]
-//    }
+    Handler handler1 = new Handler();
+    Runnable runnable1 = new Runnable() {
+        @Override
+        public void run() {
+            // TODO Auto-generated method stub
+            if (bound && odometer != null) {
+                runningFragment.draw2D();
+            }
+            handler1.postDelayed(this, 250000);
+        }
+    };
+
 
     private ServiceConnection connection = new ServiceConnection() {
         @Override
@@ -96,10 +100,9 @@ public class RunningDataActivity extends FragmentActivity {
         Chronometer text_timer = findViewById(R.id.text_timer);
         text_timer.setBase(SystemClock.elapsedRealtime());
         text_timer.start();
-        //enableDebugMode();
-        //enableAtRuntime();
+
         initContent();
-        //Crashlytics.log(Log.DEBUG, "tag", "message"); //回傳當機時再啟用即可.
+
         Button button = findViewById(R.id.btPause);
         Button button1 =  findViewById(R.id.btPlay);
         button1.setVisibility(button1.GONE);
@@ -113,6 +116,7 @@ public class RunningDataActivity extends FragmentActivity {
         });
 
         displayDistance();
+        //displayDraw2D();  劃線功能尚未完成,先關閉,
     }
 
     private void changeFragment(Fragment fragment) {
@@ -138,6 +142,8 @@ public class RunningDataActivity extends FragmentActivity {
         bindService(intent, connection, Context.BIND_AUTO_CREATE); //在activity啟動時綁定服務.
         Button button =  findViewById(R.id.btSubmit);
         button.setVisibility(button.GONE);
+
+
     }
 
     @Override
@@ -178,9 +184,6 @@ public class RunningDataActivity extends FragmentActivity {
             text_timer.setBase(SystemClock.elapsedRealtime());
         }
         text_timer.start();
-
-
-
         Button button1 = findViewById(R.id.btPlay);
         button1.setVisibility(View.GONE);
         Button button =  findViewById(R.id.btPause);
@@ -194,7 +197,6 @@ public class RunningDataActivity extends FragmentActivity {
     }
 
     private void displayDistance() {
-
         handler.post(runnable);  //計算里程
     }
 
@@ -218,6 +220,10 @@ public class RunningDataActivity extends FragmentActivity {
             bound = false;
         }
         return true;
+    }
+
+    private void displayDraw2D() {
+        handler1.post(runnable1);  //計算里程
     }
 
 }
