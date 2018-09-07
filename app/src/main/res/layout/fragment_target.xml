@@ -1,24 +1,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/Target"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/Shop">
+    android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/shop_toolbar"
+        android:id="@+id/target_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:contentInsetStart="165dp"
-        app:title="@string/SHOP"
-        app:titleTextColor="@color/colorWhite"
         android:background="@color/colorBlue"
-        >
+        app:contentInsetStart="165dp"
+        app:title="@string/TARGET"
+        app:titleTextColor="@color/colorWhite">
 
     </android.support.v7.widget.Toolbar>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/shop_recycler_view"
+        android:id="@+id/target_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">

@@ -11,14 +11,11 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 
 //import com.crashlytics.android.Crashlytics;
-import com.example.janhon.bonusrunningbeforeyou.OtherMainFunction.FilledFragment;
+import com.example.janhon.bonusrunningbeforeyou.Target.TargetFragment;
 import com.example.janhon.bonusrunningbeforeyou.R;
 import com.example.janhon.bonusrunningbeforeyou.OtherMainFunction.UserFragment;
 import com.example.janhon.bonusrunningbeforeyou.Shop.ShopFragment;
@@ -79,9 +76,9 @@ public class RunningActivity extends FragmentActivity  {
                     setTitle(R.string.textUser);
                     return true;
                 case R.id.item_Filled:
-                    fragment = new FilledFragment();
+                    fragment = new TargetFragment();
                     changeFragment(fragment);
-                    setTitle(R.string.textFilled);
+                    setTitle(R.string.textTarget);
                     return true;
                 case R.id.item_FriendShip:
                     fragment = new FriendsFragment();

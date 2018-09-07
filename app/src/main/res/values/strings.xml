@@ -4,7 +4,7 @@
     <string name="textSubmit">跑步</string>
     <string name="tsStart">START</string>
     <string name="textUser">會員</string>
-    <string name="textFilled">目標</string>
+    <string name="textTarget">目標</string>
     <string name="textFriendShip">社交</string>
     <string name="textShop">商城</string>
     <string name="SHOP">點數商城</string>
@@ -47,4 +47,19 @@
     <string name="game_detail">八月份距離競賽</string>
     <string name="buttonJoinGame">加入</string>
     <string name="dailogText">確定</string>
+    <string name="TARGET">目標挑戰</string>
+    <string name="dareid">DareId</string>
+    <string name="timeid">TimeId</string>
+    <string name="km_one">Km_one</string>
+    <string name="slash">/</string>
+    <string name="km_two">Km_two</string>
+    <string name="km_three">KM</string>
+    <string name="targetbonus">點數獎勵</string>
+    <string name="target_km">目標里程</string>
+    <string name="targetbonus1">targetbonus1</string>
+    <string name="targetkm1">targetkm1</string>
+    <string name="targetbonus2">targetbonus2</string>
+    <string name="targetkm2">targetkm2</string>
+    <string name="targetbonus3">targetbonus3</string>
+    <string name="targetkm3">targetkm3</string>
 </resources>

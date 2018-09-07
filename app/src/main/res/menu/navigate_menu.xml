@@ -9,7 +9,7 @@
     <item
         android:id="@+id/item_Filled"
         android:icon="@drawable/ic_filled"
-        android:title="@string/textFilled" />
+        android:title="@string/textTarget" />
 
 
     <item

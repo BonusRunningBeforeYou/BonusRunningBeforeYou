@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardview"
+    android:id="@+id/shop_cardview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
     android:padding="6dp"
-    app:cardBackgroundColor="@color/colorGray"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="6dp">
+    app:cardBackgroundColor="@color/colorLightBlue"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="2dp">
 
     <RelativeLayout
         android:layout_width="match_parent"

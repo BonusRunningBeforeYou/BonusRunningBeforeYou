@@ -29,7 +29,7 @@ public class ShopFragment extends Fragment {
         couponList.add(new Coupon("全嘉購物金200元", R.drawable.familymart, "剩餘27張", "200"));
         couponList.add(new Coupon("哈根達濕冰淇淋25元折價卷", R.drawable.haagendazs,"剩餘87張", "25"));
 
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.shop_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(new CouponAdpter(inflater, couponList));
         return view;
@@ -66,7 +66,7 @@ public class ShopFragment extends Fragment {
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-            View itemView = inflater.inflate(R.layout.item_shop, viewGroup, false);
+            View itemView = inflater.inflate(R.layout.shop_item, viewGroup, false);
             return new ViewHolder(itemView);
         }
 
